@@ -7,13 +7,10 @@ import TemplateContainer from './components/TemplateContainer';
 
 const renderApp = (Component) => {
   render(
-
-zzz,
-
     <AppContainer>
-        <div>
-              <Component />
-        </div>
+      <div>
+        <Component />
+      </div>
     </AppContainer>,
     document.querySelector('#react-app'),
   );
@@ -26,4 +23,3 @@ if (module && module.hot) {
     renderApp(TemplateContainer);
   });
 }
-
