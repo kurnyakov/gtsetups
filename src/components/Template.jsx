@@ -1,7 +1,14 @@
 import React from 'react';
 
-const Template = () => (
-  <div>Helll</div>
-);
+const Template = (props) => {
+  const { current } = props;
+  return (
+    <span>{current}</span>
+  );
+};
+
+Template.propTypes = {
+  current: React.PropTypes.number.isRequired,
+};
 
 export default Template;
