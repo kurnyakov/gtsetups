@@ -1,9 +1,7 @@
 import React from 'react';
 
-export default class Template extends React.Component {
-  render() {
-    return (
-      <div>Hello2</div>
-    );
-  }
-}
+const Template = () => (
+  <div>Helll</div>
+);
+
+export default Template;
