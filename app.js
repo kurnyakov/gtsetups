@@ -43,7 +43,7 @@ if (process.env.NODE_ENV !== 'production') {
   }));
 }
 
-app.use('/', index);
+app.use('/*', index);
 app.use('/users', users);
 
 // catch 404 and forward to error handler

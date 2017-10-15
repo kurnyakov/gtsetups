@@ -4,6 +4,12 @@ import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 
+// CSS from a module
+import 'bootstrap/dist/css/bootstrap.css';
+
+// CSS from a local file
+import './css/test.scss';
+
 import DevTools from './components/shared/DevTools';
 import configureStore from './store';
 
