@@ -1,4 +1,5 @@
 import 'whatwg-fetch';
+import clearError from './error';
 
 // Action Creators
 export const deleteCategorySuccess = json => ({ type: 'DELETE_CATEGORY_SUCCESS', json });
@@ -10,6 +11,7 @@ export const saveCategoryFailure = error => ({ type: 'SAVE_CATEGORY_FAILURE', er
 
 export function deleteCategory(id) {
   return async (dispatch) => {
+    dispatch(clearError());
     await fetch(
       '/api/category/delete',
       {
@@ -40,9 +42,9 @@ export function deleteCategory(id) {
   };
 }
 
-
 export function getCategory() {
   return async (dispatch) => {
+    dispatch(clearError());
     // contact the API
     await fetch(
       '/api/category/list',
@@ -71,6 +73,7 @@ export function getCategory() {
 
 export function saveCategory(userData) {
   return async (dispatch) => {
+    dispatch(clearError());
     await fetch(
       '/api/category/save',
       {

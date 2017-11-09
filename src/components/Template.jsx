@@ -1,6 +1,7 @@
 import React from 'react';
 // import { Button } from 'reactstrap';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import ErrorBox from './shared/ErrorBoxContainer';
 import Header from './shared/Header';
 import HomePage from './home/HomePageContainer';
 import Category from './category/CategoryContainer';
@@ -12,6 +13,7 @@ export default function Template() {
       <div className="wrapper">
         <Header />
         <section className="page-content container-fluid">
+          <ErrorBox />
           <Route exact path="/" component={HomePage} />
           <Route exact path="/category" component={Category} />
         </section>

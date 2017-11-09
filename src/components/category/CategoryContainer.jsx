@@ -32,7 +32,7 @@ export class CategoryContainer extends React.Component {
   render() {
     const { listdata } = this.props;
     return (
-      <div>
+      <div className="row justify-content-center">
         <CategoryPage
           saveFunction={this.saveFunction}
           deleteFunction={this.deleteFunction}
@@ -52,7 +52,7 @@ CategoryContainer.propTypes = {
   listdata: React.PropTypes.arrayOf(React.PropTypes.shape({
     _id: React.PropTypes.string,
     name: React.PropTypes.string,
-  })).isRequired, // TODO: must be changed!
+  })).isRequired,
 };
 
 export default connect(mapStateToProps)(CategoryContainer);
