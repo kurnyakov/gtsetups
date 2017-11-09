@@ -1,39 +1,42 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { checkSession } from '../actions/authentication';
+
 import Template from './Template';
-import { testAction } from '../actions/test';
 
 class TemplateContainer extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.checkUserSession = this.checkUserSession.bind(this);
+  }
+
   componentWillMount() {
-    const testAction2 = this.props.testAction2;
-    testAction2();
+    this.checkUserSession();
+  }
+
+  checkUserSession() {
+    const { dispatch } = this.props;
+    dispatch(checkSession());
   }
 
   render() {
-    const { test, testAction2 } = this.props;
+    const { isLoggedIn } = this.props;
     return (
-      <Template current={test} increase={testAction2} />
+      <Template isLoggedIn={isLoggedIn} />
     );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    test: state.test,
+    isLoggedIn: state.authentication.isLoggedIn,
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    testAction2: testAction,
-  }, dispatch);
-}
-
 TemplateContainer.propTypes = {
-  test: React.PropTypes.number.isRequired,
-  testAction2: React.PropTypes.func.isRequired,
+  dispatch: React.PropTypes.func.isRequired,
+  isLoggedIn: React.PropTypes.bool.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TemplateContainer);
+export default connect(mapStateToProps)(TemplateContainer);
