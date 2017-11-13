@@ -77,9 +77,10 @@ export default class Category extends React.Component {
     /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
       <CategoryRow
         key={data._id}
+        id={data._id}
         number={i + 1}
         name={data.name}
-        removefunc={() => this.deleteCategory(data._id)}
+        removefunc={this.deleteCategory}
       />
     ));
     if (!tableRows.length) {
