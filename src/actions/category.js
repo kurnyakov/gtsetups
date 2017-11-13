@@ -2,16 +2,20 @@ import 'whatwg-fetch';
 import clearError from './error';
 
 // Action Creators
+export const deleteCategoryAttempt = () => ({ type: 'DELETE_CATEGORY_ATTEMPT' });
 export const deleteCategorySuccess = json => ({ type: 'DELETE_CATEGORY_SUCCESS', json });
 export const deleteCategoryFailure = error => ({ type: 'DELETE_CATEGORY_FAILURE', error });
+export const getCategoryAttempt = () => ({ type: 'GET_CATEGORY_ATTEMPT' });
 export const getCategorySuccess = json => ({ type: 'GET_CATEGORY_SUCCESS', json });
 export const getCategoryFailure = error => ({ type: 'GET_CATEGORY_FAILURE', error });
+export const saveCategoryAttempt = () => ({ type: 'SAVE_CATEGORY_ATTEMPT' });
 export const saveCategorySuccess = json => ({ type: 'SAVE_CATEGORY_SUCCESS', json });
 export const saveCategoryFailure = error => ({ type: 'SAVE_CATEGORY_FAILURE', error });
 
 export function deleteCategory(id) {
   return async (dispatch) => {
     dispatch(clearError());
+    dispatch(deleteCategoryAttempt());
     await fetch(
       '/api/category/delete',
       {
@@ -45,6 +49,7 @@ export function deleteCategory(id) {
 export function getCategory() {
   return async (dispatch) => {
     dispatch(clearError());
+    dispatch(getCategoryAttempt());
     // contact the API
     await fetch(
       '/api/category/list',
@@ -74,6 +79,7 @@ export function getCategory() {
 export function saveCategory(userData) {
   return async (dispatch) => {
     dispatch(clearError());
+    dispatch(saveCategoryAttempt());
     await fetch(
       '/api/category/save',
       {

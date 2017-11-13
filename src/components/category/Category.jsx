@@ -67,8 +67,14 @@ export default class Category extends React.Component {
 
   render() {
     const { listdata } = this.props;
-    let tableRows = listdata.map((data, i) => (
-      /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
+    let tableRows;
+    /* if (isLoading) {
+      tableRows = (
+        <tr><td colSpan="3" className="text-center">Loading...</td></tr>
+      );
+    } else { */
+    tableRows = listdata.map((data, i) => (
+    /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
       <CategoryRow
         key={data._id}
         number={i + 1}
@@ -81,6 +87,7 @@ export default class Category extends React.Component {
         <tr><td colSpan="3" className="text-center">Nothing found</td></tr>
       );
     }
+    // }
     return (
       <div className="col">
         <Table responsive className="table-condensed table-hover">
@@ -154,4 +161,5 @@ Category.propTypes = {
     _id: React.PropTypes.string,
     name: React.PropTypes.string,
   })).isRequired,
+  // isLoading: React.PropTypes.bool.isRequired,
 };

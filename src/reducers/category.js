@@ -1,28 +1,43 @@
-const initialState = [];
+const initialState = {
+  list: [],
+  // isLoading: false,
+};
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case 'DELETE_CATEGORY_ATTEMPT':
+    case 'GET_CATEGORY_ATTEMPT':
+    case 'SAVE_CATEGORY_ATTEMPT': {
+      const newState = Object.assign({}, state);
+      // newState.isLoading = true;
+      return newState;
+    }
     case 'GET_CATEGORY_SUCCESS': {
-      const newState = [...state];
-      const keys = Object.keys(action.json);
-      const values = Object.values(action.json);
-      for (let i = 0; i < keys.length; i += 1) {
-        newState.push(values[i]);
-      }
+      const newState = {};
+      newState.list = Array.prototype.slice.call(action.json);
+      // newState.isLoading = false;
       return newState;
     }
     case 'DELETE_CATEGORY_SUCCESS': {
-      const newState = [...state];
       /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
-      for (let i = 0; i < newState.length; i += 1) {
-        if (newState[i]._id === action.json._id) {
-          newState.splice(i, 1);
-        }
-      }
+      const newState = {};
+      newState.list = [...state.list];
+      newState.list = newState.list.filter(item => (item._id !== action.json._id));
+      // newState.isLoading = false;
       return newState;
     }
     case 'SAVE_CATEGORY_SUCCESS': {
-      return [...state, action.json];
+      const newState = {};
+      newState.list = state.list.concat(action.json);
+      // newState.isLoading = false;
+      return newState;
+    }
+    case 'DELETE_CATEGORY_FAILURE':
+    case 'SAVE_CATEGORY_FAILURE': {
+      const newState = {};
+      newState.list = [...state.list];
+      // newState.isLoading = false;
+      return newState;
     }
     default: {
       return state;

@@ -37,6 +37,7 @@ export class CategoryContainer extends React.Component {
           saveFunction={this.saveFunction}
           deleteFunction={this.deleteFunction}
           listdata={listdata}
+          // isLoading={isLoading}
         />
       </div>
     );
@@ -44,7 +45,8 @@ export class CategoryContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  listdata: state.categorylist,
+  listdata: state.category.list,
+  // isLoading: state.category.isLoading,
 });
 
 CategoryContainer.propTypes = {
@@ -53,6 +55,7 @@ CategoryContainer.propTypes = {
     _id: React.PropTypes.string,
     name: React.PropTypes.string,
   })).isRequired,
+  // isLoading: React.PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps)(CategoryContainer);
