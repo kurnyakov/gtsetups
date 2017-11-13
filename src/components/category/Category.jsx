@@ -1,7 +1,8 @@
 import React from 'react';
 import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
-import { Button, Label, Modal, ModalHeader, ModalBody, ModalFooter, Table } from 'reactstrap';
+import { Button, Label, Modal, ModalHeader, ModalBody, Table } from 'reactstrap';
 import CategoryRow from './CategoryRow';
+import ConfirmModal from '../shared/ConfirmModal';
 
 export default class Category extends React.Component {
   constructor(props) {
@@ -138,17 +139,15 @@ export default class Category extends React.Component {
               </AvForm>
             </ModalBody>
           </Modal>
-          <Modal
+          <ConfirmModal
             isOpen={this.state.confirmVisible}
-            toggle={this.toggleDelete}
-          >
-            <ModalHeader toggle={this.toggleDelete}>Delete category</ModalHeader>
-            <ModalBody>Are you sure?</ModalBody>
-            <ModalFooter>
-              <Button color="primary" onClick={this.handleCategoryDelete}>Delete category</Button>{' '}
-              <Button color="secondary" onClick={this.toggleDelete}>Cancel</Button>
-            </ModalFooter>
-          </Modal>
+            toggleVisibilityFunc={this.toggleDelete}
+            mainFunc={this.handleCategoryDelete}
+            headerText="Delete category"
+            questionText="Are you sure?"
+            confirmText="Delete category"
+            cancelText="Cancel"
+          />
         </div>
       </div>
     );
