@@ -5,6 +5,7 @@ import ErrorBox from './shared/ErrorBoxContainer';
 import Header from './shared/Header';
 import HomePage from './home/HomePageContainer';
 import Category from './category/CategoryContainer';
+import Setup from './setup/SetupPageContainer';
 
 export default function Template() {
   // const { isLoggedIn } = props;
@@ -16,6 +17,7 @@ export default function Template() {
           <ErrorBox />
           <Route exact path="/" component={HomePage} />
           <Route exact path="/category" component={Category} />
+          <Route exact path="/setup" component={Setup} />
         </section>
       </div>
     </Router>
