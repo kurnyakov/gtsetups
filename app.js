@@ -13,6 +13,7 @@ const index = require('./routes/index');
 const users = require('./routes/users');
 const authentication = require('./routes/api/authentication');
 const carCategory = require('./routes/api/category');
+const car = require('./routes/api/car');
 
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
@@ -60,6 +61,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use('/api/authentication', authentication);
 app.use('/api/category', carCategory);
+app.use('/api/car', car);
 app.use('/api/users', users);
 app.use('/*', index);
 

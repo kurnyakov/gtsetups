@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'reactstrap';
 
 import BrakesComponent from './BrakesComponent';
 import TractionComponent from './TractionComponent';
@@ -12,6 +13,7 @@ export function SetupPageContainer(props) {
       <TractionComponent value={traction} />
       <TiresComponent frontTires={frontTires} rearTires={rearTires} />
       <BrakesComponent value={brakes} />
+      <Button className="float-right" color="primary">Save</Button>
     </div>
   );
 }

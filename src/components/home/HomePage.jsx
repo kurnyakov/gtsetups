@@ -4,6 +4,7 @@ import LoginPage from '../account/LoginPageContainer';
 export default function HomePage(props) {
   // TODO: Refactor this!
   const { isLoggedIn, isLoggingIn } = props;
+
   if (isLoggingIn) {
     return (
       <span>Loading...</span>
@@ -15,6 +16,7 @@ export default function HomePage(props) {
       <span>Feed!</span>
     );
   }
+
   return (
     <LoginPage />
   );

@@ -14,6 +14,7 @@ export default function reducer(state = initialState, action) {
     }
     case 'DELETE_CATEGORY_FAILURE':
     case 'GET_CATEGORY_FAILURE':
+    case 'SAVE_CAR_FAILURE':
     case 'SAVE_CATEGORY_FAILURE': {
       const newState = Object.assign({}, initialState);
       newState.isError = true;
